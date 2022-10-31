@@ -1,0 +1,15 @@
+.timestamp {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    font-size: 1rem;
+    color: var(--subtitle-theme-dark);
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.regular {
+    font-weight: 500;
+}
