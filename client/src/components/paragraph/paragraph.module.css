@@ -1,0 +1,39 @@
+.paragraph {
+    margin: 0;
+    padding: 0;
+}
+
+.primary {
+    color: var(--title-theme-dark);
+}
+
+.inactive {
+    color: var(--subtitle-theme-dark);
+}
+
+.s {
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
+
+.m {
+    font-size: 1rem;
+    line-height: 1.25rem;
+}
+
+.l {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+}
+
+.regular {
+    font-weight: 500;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.black {
+    font-weight: 900;
+}
