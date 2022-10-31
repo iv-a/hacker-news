@@ -3,6 +3,7 @@
     padding: 0;
     display: inline-block;
     font-size: 1rem;
+    line-height: 0.75rem;
     color: var(--subtitle-theme-dark);
 }
 
@@ -12,4 +13,11 @@
 
 .regular {
     font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+    .timestamp {
+        font-size: 0.75rem;
+        line-height: 0.75rem;
+    }
 }
