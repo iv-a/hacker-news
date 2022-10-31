@@ -1,0 +1,22 @@
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f44336;
+    border-radius: 50%;
+    color: var(--title-theme-dark);
+    font-weight: 700;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .avatar {
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 0.75rem;
+        line-height: 0.75rem;
+    }
+}
