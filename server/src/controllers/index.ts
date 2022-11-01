@@ -65,3 +65,14 @@ export const getPostWithCommentsController = async (request: Request, response: 
     next(err);
   }
 }
+
+export const getCommentsController = async (request: Request, response: Response, next: NextFunction) => {
+  const { id } = request.body;
+
+  try {
+    const { kids } = await getTree(id);
+    response.send(kids);
+  } catch (err) {
+    next(err);
+  }
+}
