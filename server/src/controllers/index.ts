@@ -1,7 +1,7 @@
 import axios from "axios";
 import {ENDPOINTS, HN_API_URL} from "../utils/constants";
 import {NextFunction, Request, Response} from "express";
-import DOMPurify from "dompurify";
+import DOMPurify from "isomorphic-dompurify";
 import {InternalServerErrorException} from "../exceptions";
 import {IPost} from "../models";
 
@@ -20,7 +20,7 @@ const getTree = async (rootId: number) => {
     const item = await getItem(rootId);
     const { kids = [], count = 0 } = item;
 
-    const children = await Promise.all(kids.map(async (id: any) => {
+    const children = await Promise.all(kids.map(async (id: number) => {
       return await getTree(id);
     }));
 
@@ -29,6 +29,9 @@ const getTree = async (rootId: number) => {
 
     return { ...item, kids: filteredChildren, count: count + filteredChildren.length + childrenCount }
   } catch (err) {
+    if (err instanceof Error) {
+      throw new InternalServerErrorException(err.message);
+    }
     throw new InternalServerErrorException();
   }
 };
