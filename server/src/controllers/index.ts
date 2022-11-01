@@ -3,9 +3,9 @@ import {ENDPOINTS, HN_API_URL} from "../utils/constants";
 import {NextFunction, Request, Response} from "express";
 import DOMPurify from "isomorphic-dompurify";
 import {InternalServerErrorException} from "../exceptions";
-import {IPost} from "../models";
+import {IGetItem, IPost} from "../models";
 
-const getItem = async (id: number) => {
+const getItem = async (id: string) => {
   const { data } = await axios.get(HN_API_URL + ENDPOINTS.ITEM + id + ENDPOINTS.JSON);
   let { text } = data;
   if (text) {
@@ -15,13 +15,13 @@ const getItem = async (id: number) => {
   return data;
 }
 
-const getTree = async (rootId: number) => {
+const getTree = async (rootId: string) => {
   try {
     const item = await getItem(rootId);
     const { kids = [], count = 0 } = item;
 
     const children = await Promise.all(kids.map(async (id: number) => {
-      return await getTree(id);
+      return await getTree(id.toString());
     }));
 
     const filteredChildren = children.filter(({text}) => text);
@@ -45,8 +45,8 @@ export const getPostsListController = async (request: Request, response: Respons
   }
 }
 
-export const getItemController = async (request: Request, response: Response, next: NextFunction) => {
-  const { id } = request.body;
+export const getItemController = async (request: Request<unknown, unknown, unknown, IGetItem>, response: Response, next: NextFunction) => {
+  const { id } = request.query;
   try {
     response.send(await getItem(id));
   } catch (err) {
@@ -54,8 +54,8 @@ export const getItemController = async (request: Request, response: Response, ne
   }
 }
 
-export const getPostWithCommentsController = async (request: Request, response: Response, next: NextFunction) => {
-  const { id } = request.body;
+export const getPostWithCommentsController = async (request: Request<unknown, unknown, unknown, IGetItem>, response: Response, next: NextFunction) => {
+  const { id } = request.query;
 
   try {
     const post = await getTree(id);
@@ -69,8 +69,8 @@ export const getPostWithCommentsController = async (request: Request, response: 
   }
 }
 
-export const getCommentsController = async (request: Request, response: Response, next: NextFunction) => {
-  const { id } = request.body;
+export const getCommentsController = async (request: Request<unknown, unknown, unknown, IGetItem>, response: Response, next: NextFunction) => {
+  const { id } = request.query;
 
   try {
     const { kids } = await getTree(id);

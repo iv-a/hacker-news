@@ -16,3 +16,6 @@ export interface IGetPostsQuery {
   page?: string;
 }
 
+export interface IGetItem {
+  id: string;
+}
