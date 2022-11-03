@@ -47,7 +47,7 @@ export const NewsCard: FC<INewsCardProps> = ({ newsId, className }) => {
     <li
       className={cn(styles.card, className)}
     >
-      <Link to={{ pathname: `/${id}` }} className={cn(styles.link)}>
+      <Link to={{ pathname: `/news/${id}` }} className={cn(styles.link)}>
         <div className={cn(styles.card_header)}>
           <Timestamp time={time} />
           <Avatar name={by} />

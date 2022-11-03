@@ -4,7 +4,7 @@ import {
   Layout,
   Header, Footer, ScrollUp,
 } from '..';
-import { MainPage, NewsStoryPage } from '../../pages';
+import {MainPage, NewsStoryPage, NotFoundPage} from '../../pages';
 
 export const App: FC = () => (
   <BrowserRouter>
@@ -14,8 +14,11 @@ export const App: FC = () => (
         <Route path="/" exact>
           <MainPage />
         </Route>
-        <Route path="/:id">
+        <Route path="/news/:id">
           <NewsStoryPage />
+        </Route>
+        <Route>
+          <NotFoundPage />
         </Route>
       </Switch>
       <Footer />
