@@ -1,15 +1,15 @@
-import React, {DetailedHTMLProps, FC, HTMLAttributes, useMemo} from "react";
+import React, {
+  DetailedHTMLProps, FC, HTMLAttributes, useMemo,
+} from 'react';
+import cn from 'classnames';
 import styles from './avatar.module.css';
-import cn from "classnames";
 
-interface IAvatarProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
+interface IAvatarProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   name: string;
 }
 
 export const Avatar:FC<IAvatarProps> = ({ name, className, ...props }) => {
-  const letter = useMemo(() => {
-    return name[0].toUpperCase();
-  }, [name]);
+  const letter = useMemo(() => (name ? name[0].toUpperCase() : ''), [name]);
 
   return (
     <div
@@ -19,4 +19,4 @@ export const Avatar:FC<IAvatarProps> = ({ name, className, ...props }) => {
       {letter}
     </div>
   );
-}
+};
