@@ -11,11 +11,6 @@ export interface IPost {
   url?: string;
 }
 
-export interface IGetPostsQuery {
-  limit?: string;
-  page?: string;
-}
-
 export interface IGetItem {
   id: string;
 }

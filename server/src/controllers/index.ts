@@ -3,7 +3,7 @@ import {ENDPOINTS, HN_API_URL} from "../utils/constants";
 import {NextFunction, Request, Response} from "express";
 import DOMPurify from "isomorphic-dompurify";
 import {InternalServerErrorException} from "../exceptions";
-import {IGetItem, IPost} from "../models";
+import {IGetItem} from "../models";
 
 const getItem = async (id: string) => {
   const { data } = await axios.get(HN_API_URL + ENDPOINTS.ITEM + id + ENDPOINTS.JSON);
@@ -18,16 +18,15 @@ const getItem = async (id: string) => {
 const getTree = async (rootId: string) => {
   try {
     const item = await getItem(rootId);
-    const { kids = [], count = 0 } = item;
+    const { kids = [], count = 0, id } = item;
 
     const children = await Promise.all(kids.map(async (id: number) => {
       return await getTree(id.toString());
     }));
 
-    const filteredChildren = children.filter(({text}) => text);
-    const childrenCount = filteredChildren.reduce((acc, cur) => acc + cur.count, 0);
+    const childrenCount = children.reduce((acc, cur) => acc + cur.count, 0);
 
-    return { ...item, kids: filteredChildren, count: count + filteredChildren.length + childrenCount }
+    return { id, kids: children, count: count + children.length + childrenCount }
   } catch (err) {
     if (err instanceof Error) {
       throw new InternalServerErrorException(err.message);
@@ -58,23 +57,12 @@ export const getPostWithCommentsController = async (request: Request<unknown, un
   const { id } = request.query;
 
   try {
-    const post = await getTree(id);
-    const { kids } = post;
+    const post = await getItem(id);
+    const { kids } = await getTree(id);
     response.send({
       ...post,
-      kids: kids.map(({ kids, ...rest }: IPost) => ({ ...rest })),
+      kids: kids
     });
-  } catch (err) {
-    next(err);
-  }
-}
-
-export const getCommentsController = async (request: Request<unknown, unknown, unknown, IGetItem>, response: Response, next: NextFunction) => {
-  const { id } = request.query;
-
-  try {
-    const { kids } = await getTree(id);
-    response.send(kids);
   } catch (err) {
     next(err);
   }

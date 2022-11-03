@@ -10,5 +10,3 @@ export enum ENDPOINTS {
   POSTS = '/newstories',
   JSON = '.json',
 }
-
-export const DEC_RADIX = 10;
