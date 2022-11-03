@@ -1,0 +1,17 @@
+.spinner {
+	width: 4rem;
+	height: 4rem;
+	margin: 4rem;
+
+	animation: spinner 1s linear infinite;
+
+	border: 8px solid rgb(255 255 255 / 20%);
+	border-left-color: rgb(255 255 255 / 60%);
+	border-radius: 50%;
+}
+
+@keyframes spinner {
+	100% {
+		transform: rotate(360deg);
+	}
+}
