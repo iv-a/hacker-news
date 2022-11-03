@@ -1,33 +1,48 @@
 html {
-    font-size: 16px;
+	font-size: 16px;
 }
 
 body {
-  margin: 0;
-  font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-    background-color: var(--background-theme-dark);
+	margin: 0;
+
+	background-color: var(--background-theme-dark);
+
+	font-family:
+		Montserrat,
+		"Segoe UI",
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		"Fira Sans",
+		"Droid Sans",
+		"Helvetica Neue",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family:
+		source-code-pro,
+		Menlo,
+		Monaco,
+		Consolas,
+		"Courier New",
+		monospace;
 }
 
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 :root {
-    --background-theme-dark: #0A1929;
-    --card-theme-dark: #001E3C;
-    --border-theme-dark: rgba(102, 178, 255, 0.15);
-    --title-theme-dark: #FFFFFF;
-    --subtitle-theme-dark: rgba(178, 186, 194, 1);
-    --scores-positive: #66BB6A;
-    --scores-negative: #f44336;
-    --skeleton-placeholder: rgba(255, 255, 255, 0.15);
+	--background-theme-dark: #0A1929;
+	--card-theme-dark: #001E3C;
+	--border-theme-dark: rgb(102 178 255 / 15%);
+	--title-theme-dark: #FFF;
+	--subtitle-theme-dark: rgb(178 186 194 / 100%);
+	--scores-positive: #66BB6A;
+	--scores-negative: #F44336;
+	--skeleton-placeholder: rgb(255 255 255 / 15%);
 }
