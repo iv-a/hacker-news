@@ -1,17 +1,13 @@
-import React, {DetailedHTMLProps, FC, HTMLAttributes} from 'react';
-import styles from './skeleton-placeholder.module.css'
-import cn from "classnames";
+import React, { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
+import cn from 'classnames';
+import styles from './skeleton-placeholder.module.css';
 
-interface ISkeletonPlaceholderProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
+interface ISkeletonPlaceholderProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 }
 
-export const SkeletonPlaceholder: FC<ISkeletonPlaceholderProps> = ({ className, ...props}) => {
-  return (
-    <div
-      className={cn(className, styles.placeholder, )}
-      { ...props }
-    >
-
-    </div>
-  );
-};
+export const SkeletonPlaceholder: FC<ISkeletonPlaceholderProps> = ({ className, ...props }) => (
+  <div
+    className={cn(className, styles.placeholder)}
+    {...props}
+  />
+);
