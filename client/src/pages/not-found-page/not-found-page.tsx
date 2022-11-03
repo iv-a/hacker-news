@@ -19,7 +19,7 @@ export const NotFoundPage: FC = () => {
         </Button>
       </div>
       <div className={styles.message}>
-        <Paragraph size={'l'} color={"inactive"} weight={'black'}>404 Not Found</Paragraph>
+        <Paragraph size="l" color="inactive" weight="black">404 Not Found</Paragraph>
       </div>
     </Main>
   );

@@ -20,7 +20,7 @@ export const NewsPost: FC<IItem> = ({
     </div>
     <div className={cn(styles.post_body)}>
       <Title>{title}</Title>
-      <a className={cn(styles.link)} href={url} target='_blank'>{url}</a>
+      <a className={cn(styles.link)} href={url} target="_blank" rel="noreferrer">{url}</a>
       {text && <Paragraph dangerouslySetInnerHTML={{ __html: text }} type="div" />}
     </div>
     <Score score={score} size="s" />

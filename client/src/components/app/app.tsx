@@ -4,7 +4,7 @@ import {
   Layout,
   Header, Footer, ScrollUp,
 } from '..';
-import {MainPage, NewsStoryPage, NotFoundPage} from '../../pages';
+import { MainPage, NewsStoryPage, NotFoundPage } from '../../pages';
 
 export const App: FC = () => (
   <BrowserRouter>
