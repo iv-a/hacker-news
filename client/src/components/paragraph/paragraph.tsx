@@ -1,37 +1,51 @@
-import React, {DetailedHTMLProps, FC, HTMLAttributes, ReactNode} from "react";
+import React, {
+  DetailedHTMLProps, FC, HTMLAttributes, ReactNode,
+} from 'react';
+import cn from 'classnames';
 import styles from './paragraph.module.css';
-import cn from "classnames";
 
-interface IParagraphProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
+interface IParagraphProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   size?: 's' | 'm' | 'l';
-  color?: 'primary' | 'inactive';
+  color?: 'primary' | 'inactive' | 'accent';
   weight?: 'regular' | 'bold' | 'black';
-  children: ReactNode;
+  type?: 'div' | 'p';
+  children?: ReactNode;
 }
 
 export const Paragraph:FC<IParagraphProps> = ({
-     size = 'm',
-     color= 'primary',
-     weight = 'regular',
-     children,
-     className,
-     ...props
+  type = 'p',
+  size = 'm',
+  color = 'primary',
+  weight = 'regular',
+  children,
+  className,
+  ...props
 }) => {
-  return (
+  const paragraphClassName = cn(styles.paragraph, className, {
+    [styles.primary]: color === 'primary',
+    [styles.inactive]: color === 'inactive',
+    [styles.accent]: color === 'accent',
+    [styles.s]: size === 's',
+    [styles.m]: size === 'm',
+    [styles.l]: size === 'l',
+    [styles.regular]: weight === 'regular',
+    [styles.bold]: weight === 'bold',
+    [styles.black]: weight === 'black',
+  });
+
+  return type === 'p' ? (
     <div
-      className={cn(styles.paragraph, className, {
-        [styles.primary]: color === 'primary',
-        [styles.inactive]: color === 'inactive',
-        [styles.s]: size === 's',
-        [styles.m]: size === 'm',
-        [styles.l]: size === 'l',
-        [styles.regular]: weight === 'regular',
-        [styles.bold]: weight === 'bold',
-        [styles.black]: weight === 'black',
-      })}
+      className={paragraphClassName}
       {...props}
     >
       {children}
     </div>
+  ) : (
+    <p
+      className={paragraphClassName}
+      {...props}
+    >
+      {children}
+    </p>
   );
-}
+};
