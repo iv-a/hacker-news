@@ -1,18 +1,18 @@
-import React, {DetailedHTMLProps, FC, HTMLAttributes, ReactNode} from "react";
+import React, {
+  DetailedHTMLProps, FC, HTMLAttributes, ReactNode,
+} from 'react';
+import cn from 'classnames';
 import styles from './username.module.css';
-import cn from "classnames";
 
-interface IUsernameProps extends DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>{
+interface IUsernameProps extends DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement> {
   children: ReactNode;
 }
 
-export const Username:FC<IUsernameProps> = ({ children, className, ...props }) => {
-  return (
-    <p
-      className={cn(styles.username, className)}
-      {...props}
-    >
-      {children}
-    </p>
-  );
-}
+export const Username:FC<IUsernameProps> = ({ children, className, ...props }) => (
+  <p
+    className={cn(styles.username, className)}
+    {...props}
+  >
+    {children}
+  </p>
+);

@@ -1,16 +1,19 @@
 .username {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1rem;
-    color: var(--subtitle-theme-dark);
+	display: inline-block;
+
+	margin: 0;
+	padding: 0;
+
+	color: var(--subtitle-theme-dark);
+
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1rem;
 }
 
 @media screen and (max-width: 768px) {
-    .username {
-        font-size: 0.75rem;
-        line-height: 0.75rem;
-    }
+	.username {
+		font-size: 0.75rem;
+		line-height: 0.75rem;
+	}
 }
