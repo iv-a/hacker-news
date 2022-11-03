@@ -1,0 +1,25 @@
+.container {
+	position: fixed;
+	right: 10%;
+	bottom: 10%;
+
+	padding: 0;
+
+	cursor: pointer;
+
+	border: none;
+	background: none;
+}
+
+.icon {
+	width: 2rem;
+	height: 2rem;
+
+	color: rgb(0 127 255 / 20%);
+	border-radius: 50%;
+}
+
+.container:hover .icon {
+	color: rgb(0 127 255 / 100%);
+	box-shadow: 0 0 2rem 4px rgb(38 93 151 / 100%);
+}
