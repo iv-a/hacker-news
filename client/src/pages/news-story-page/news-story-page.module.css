@@ -1,0 +1,27 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	width: 100%;
+	padding: 2rem 0;
+}
+
+.comments {
+	width: 100%;
+	padding: 2rem;
+}
+
+.label {
+	align-self: flex-start;
+}
+
+@media screen and (max-width: 768px) {
+	.container {
+		padding: 1rem;
+	}
+
+	.comments {
+		padding: 1rem;
+	}
+}
