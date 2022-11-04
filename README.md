@@ -28,6 +28,10 @@
 --!>
 <h1 id="about">О проекте</h1>
 <p>Интерфейс для сайта <a href="https://news.ycombinator.com/news">Hacker News</a></p>
+
+
+![chrome_AS3cEyD3ow](https://user-images.githubusercontent.com/61308457/199858841-e75434e2-90de-4344-b2e9-dfd747b1b2ce.gif)
+
 <!--
 <table>
   <tbody>
