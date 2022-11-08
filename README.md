@@ -195,7 +195,7 @@ yarn start
 <li>
   <p>Переходим в директорию с фронтендом:</p>
 <pre>
-cd ../client/
+cd client/
 </pre>
 </li>
 <li>
